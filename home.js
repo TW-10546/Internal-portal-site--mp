@@ -82,13 +82,17 @@ function initAdminPanel() {
     });
     
     // Admin dropdown button actions
-    aiNewsBtn.addEventListener("click", function() {
-        showModal(aiNewsModal);
-    });
+    // In home.js, update the AI News button event listener:
+aiNewsBtn.addEventListener("click", function() {
+    // Redirect to the new AI News Creation page
+    window.location.href = "ai-news.html";
+});
     
-    schedulerBtn.addEventListener("click", function() {
-        showModal(schedulerModal);
-    });
+    // In home.js, update the Scheduler button event listener:
+schedulerBtn.addEventListener("click", function() {
+    // Redirect to the Scheduler page
+    window.location.href = "scheduler.html";
+});
     
     // Close modal buttons
     closeModalButtons.forEach(button => {
