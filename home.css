@@ -1,0 +1,103 @@
+/* UNIVERSAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f7fb;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #072a5e, #0055b8);
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #00d1ff;
+}
+
+nav a {
+    display: block;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #e2e8f3;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+nav a:hover, nav a.active {
+    background: rgba(255,255,255,0.18);
+    border-left: 5px solid #00d1ff;
+}
+
+/* MAIN CONTENT */
+.content {
+    margin-left: 250px;
+    padding: 30px;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #072a5e;
+    margin-bottom: 25px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD BOXES */
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: #062a4d;
+}
+
+.card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8edf5;
+    font-size: 14px;
+}
+
+.card ul li:last-child {
+    border-bottom: none;
+}
+
+/* URGENT */
+.urgent {
+    background: #ffeaea;
+    border-left: 6px solid red;
+}
+
