@@ -1,0 +1,125 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #072a5e, #1a4fa3);
+}
+
+/* Soft floating color lights */
+.bg-graphic {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at 30% 30%, rgba(0,118,255,0.6), transparent 70%),
+                radial-gradient(circle at 70% 70%, rgba(0,217,255,0.4), transparent 70%),
+                radial-gradient(circle at 50% 10%, rgba(255,255,255,0.2), transparent 60%);
+    animation: float 8s infinite ease-in-out alternate;
+    filter: blur(70px);
+    z-index: -1;
+}
+
+@keyframes float {
+    0% { transform: scale(1) translateY(-30px); }
+    100% { transform: scale(1.15) translateY(30px); }
+}
+
+/* Login Card - NOW SOLID WHITE */
+.login-wrapper {
+    width: 380px;
+    background: #ffffff;      /* ← WHITE BOX */
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    color: #0d2246;
+}
+
+/* Branding */
+.brand-logo h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #003c9e;
+}
+
+.brand-logo span {
+    color: #00a2ff;
+}
+
+.brand-logo p {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #5a6d92;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #003c9e;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid #d6e2f5;
+    margin-top: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #00a2ff;
+    box-shadow: 0 0 6px rgba(0,162,255,0.4);
+}
+
+/* Button */
+.btn-login {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    background: linear-gradient(90deg, #003c9e, #00b0ff);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.btn-login:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(0, 176, 255, 0.6);
+}
+
+/* Footer */
+.forgot-text {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.forgot-text a {
+    color: #003c9e;
+    text-decoration: none;
+    font-weight: 500;
+}
