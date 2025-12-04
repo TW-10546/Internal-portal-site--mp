@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Events</title>
+    <link rel="stylesheet" href="events.css" />
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+
+        <nav>
+            <a href="home.html">🏠 Home</a>
+            <a href="announcements.html">📢 Announcements</a>
+            <a href="#" class="active">📅 Events</a>
+            <a href="department.html">🏢 Department</a>
+            <a href="notification.html">🔔 Notifications</a>
+        </nav>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <h1 class="page-title">Events</h1>
+
+        <!-- FILTER & SEARCH -->
+        <div class="filters">
+            <input type="text" id="searchEvent" placeholder="Search event..." />
+
+            <select id="eventType">
+                <option value="all">All Events</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="past">Past</option>
+            </select>
+        </div>
+
+        <h2 class="section-title">Event List</h2>
+
+        <ul id="eventList" class="event-list"></ul>
+
+    </main>
+
+    <script src="events.js"></script>
+</body>
+</html>

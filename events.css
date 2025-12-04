@@ -1,0 +1,124 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f2f6fc;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #072a5e, #0055b8);
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #00d1ff;
+}
+
+nav a {
+    display: block;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #e2e8f3;
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+nav a:hover,
+nav a.active {
+    background: rgba(255,255,255,0.18);
+    border-left: 5px solid #00d1ff;
+}
+
+/* MAIN CONTENT */
+.content {
+    margin-left: 250px;
+    padding: 30px;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    color: #003067;
+}
+
+/* FILTERS */
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid #c9d8ec;
+    font-size: 15px;
+    width: 260px;
+}
+
+/* EVENT LIST */
+.event-list {
+    list-style: none;
+}
+
+.event-item {
+    background: white;
+    padding: 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #00234c;
+}
+
+.event-type {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0044ad;
+    background: #e6f0ff;
+}
+
+.event-date {
+    font-size: 14px;
+    color: #445267;
+    margin-bottom: 6px;
+}
+
+.event-description {
+    font-size: 14px;
+    color: #556377;
+}
