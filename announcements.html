@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Announcements</title>
+    <link rel="stylesheet" href="announcements.css" />
+</head>
+<body>
+
+    <!-- SIDEBAR MENU -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+
+        <nav>
+            <a href="home.html">🏠 Home</a>
+            <a href="#" class="active">📢 Announcements</a>
+            <a href="events.html">📅 Events</a>
+            <a href="department.html">🏢 Department</a>
+            <a href="notification.html">🔔 Notifications</a>
+        </nav>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <h1 class="page-title">Announcements</h1>
+
+        <!-- SEARCH & FILTER -->
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Search by title..." />
+            
+            <select id="deptFilter">
+                <option value="all">All Departments</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Admin">Admin</option>
+                <option value="Finance">Finance</option>
+            </select>
+        </div>
+
+        <!-- ANNOUNCEMENT LIST -->
+        <ul id="announcementList" class="announcement-list"></ul>
+
+    </main>
+
+    <script src="announcements.js"></script>
+</body>
+</html>
