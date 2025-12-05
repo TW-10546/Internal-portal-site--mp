@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Content Scheduler</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR MENU -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+        <nav>
+            <a href="home.html">
+                </i> 🏠 Home
+            </a>
+            <a href="announcements.html">
+                 📢 Announcements
+            </a>
+            <a href="events.html">
+                 📅 Events
+            </a>
+            <a href="notification.html">
+              🔔 Notifications
+            </a>
+            
+            <!-- Admin Panel Button with Dropdown -->
+            <div class="admin-panel-container">
+                <a href="#" class="admin-btn active" id="adminBtn">
+                    <i class="fas fa-cog"></i> Admin Panel
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="admin-dropdown" id="adminDropdown">
+                    <button class="admin-dropdown-btn" id="aiNewsBtn">
+                        <i class="fas fa-robot"></i> AI News Creation
+                    </button>
+                    <button class="admin-dropdown-btn active" id="schedulerBtn">
+                        <i class="fas fa-clock"></i> Scheduler
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Admin Panel Overlay (for closing dropdown when clicking outside) -->
+        <div class="admin-overlay" id="adminOverlay"></div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="page-header">
+            <h1 class="page-title"><i class="fas fa-clock"></i> Content Scheduler</h1>
+        </div>
+        
+        <!-- CREATE NEW SCHEDULE SECTION -->
+        <div class="card schedule-form">
+            <h2><i class="fas fa-plus-circle"></i> Create New Schedule</h2>
+            
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label for="scheduleTitle"><i class="fas fa-heading"></i> Title</label>
+                    <input type="text" id="scheduleTitle" placeholder="Enter announcement title...">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="scheduleDate"><i class="fas fa-calendar"></i> Date</label>
+                    <input type="date" id="scheduleDate">
+                </div>
+                
+                <div class="form-group">
+                    <label for="scheduleTime"><i class="fas fa-clock"></i> Time</label>
+                    <input type="time" id="scheduleTime">
+                </div>
+            </div>
+            
+            <!-- Repeat Options Dropdown -->
+<div class="form-row">
+    <div class="form-group">
+        <label for="repeatOption"><i class="fas fa-redo"></i> Repeat</label>
+        <select id="repeatOption" class="repeat-dropdown">
+            <option value="none">None</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+        </select>
+    </div>
+</div>
+            
+            <!-- Scheduling Time Button -->
+            <div class="form-row">
+                <div class="form-group">
+                    <button class="btn btn-schedule-time" id="scheduleTimeBtn">
+                        <i class="fas fa-clock"></i> Schedule Time
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button class="btn btn-primary" id="addScheduleBtn">
+                    <i class="fas fa-plus"></i> Add Schedule
+                </button>
+            </div>
+        </div>
+        
+        <!-- SCHEDULED LIST SECTION -->
+        <div class="card schedule-list">
+            <h2><i class="fas fa-list"></i> Scheduled List</h2>
+            
+            <div class="table-container">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date/Time</th>
+                            <th>Repeat</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody">
+                        <!-- Dynamic content will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- SCHEDULE TIME MODAL -->
+        <div class="modal" id="scheduleTimeModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-clock"></i> Schedule Time</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="customDate">Select Date</label>
+                        <input type="date" id="customDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customTime">Select Time</label>
+                        <input type="time" id="customTime">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Quick Select</label>
+                        <div class="quick-time-options">
+                            <button class="btn-quick-time" data-time="09:00">9:00 AM</button>
+                            <button class="btn-quick-time" data-time="12:00">12:00 PM</button>
+                            <button class="btn-quick-time" data-time="14:00">2:00 PM</button>
+                            <button class="btn-quick-time" data-time="17:00">5:00 PM</button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="applyTimeBtn">Apply Time</button>
+                        <button class="btn btn-secondary" id="cancelTimeBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="scheduler.js"></script>
+</body>
+</html>

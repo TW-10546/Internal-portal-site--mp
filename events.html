@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: #f8fafc;
+            color: #334155;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: linear-gradient(180deg, #0c2b5e 0%, #1e3a8a 100%);
+            color: white;
+            padding: 25px 0;
+            position: fixed;
+            height: 100%;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 0 20px;
+        }
+
+        .logo h2 {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0 15px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            font-size: 15px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        nav a.active {
+            background: rgba(96, 165, 250, 0.2);
+            color: #ffffff;
+            border-left: 4px solid #60a5fa;
+            font-weight: 600;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            margin-left: 260px;
+            padding: 30px 40px;
+            width: calc(100% - 260px);
+            max-width: 1200px;
+        }
+
+        /* HEADER SECTION */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .add-event-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .add-event-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+        }
+
+        /* FILTERS SECTION */
+        .filters-container {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 18px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .filters input {
+            padding: 12px 15px 12px 45px;
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            font-size: 15px;
+            width: 100%;
+            transition: all 0.3s;
+            background: #f8fafc;
+        }
+
+        .filters input:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+            background: white;
+        }
+
+        .filters select {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            font-size: 15px;
+            min-width: 180px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filters select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+            background: white;
+        }
+
+        /* EVENT STATS */
+        .event-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 180px;
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .upcoming-stat {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .past-stat {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+        }
+
+        .total-stat {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .stat-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stat-info p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* EVENT LIST */
+        .event-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .event-item {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #3b82f6;
+        }
+
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-item.upcoming {
+            border-top-color: #3b82f6;
+        }
+
+        .event-item.past {
+            border-top-color: #94a3b8;
+            opacity: 0.9;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .event-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .event-type {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .upcoming .event-type {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .past .event-type {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .event-date {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-date i {
+            color: #60a5fa;
+        }
+
+        .event-description {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .register-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .register-btn:hover {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            transform: translateY(-2px);
+        }
+
+        .past .register-btn {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .event-duration {
+            font-size: 14px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* CALENDAR VIEW TOGGLE */
+        .view-toggle {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 5px;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+
+        .view-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-btn.active {
+            background: white;
+            color: #3b82f6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* NO RESULTS MESSAGE */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #64748b;
+        }
+
+        /* CALENDAR VIEW */
+        .calendar-view {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-nav-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .calendar-month {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            color: #475569;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .calendar-day {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 100px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background: #f8fafc;
+            transform: translateY(-3px);
+        }
+
+        .calendar-day-number {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .calendar-event {
+            background: #eff6ff;
+            padding: 5px 8px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #2563eb;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .calendar-event:hover {
+            background: #dbeafe;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .event-list {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 80px;
+                padding: 25px 0;
+            }
+            
+            .logo h2 {
+                font-size: 20px;
+            }
+            
+            .logo span {
+                display: none;
+            }
+            
+            nav a span {
+                display: none;
+            }
+            
+            .content {
+                margin-left: 80px;
+                width: calc(100% - 80px);
+                padding: 25px;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+            
+            .filters input, .filters select {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .event-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-stats {
+                flex-direction: column;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 10px;
+            }
+            
+            .calendar-day-header {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+
+        <nav>
+            <a href="home.html">
+                <span>🏠 Home</span>
+            </a>
+            <a href="announcements.html">
+                <span>📢 Announcements</span>
+            </a>
+            <a href="#" class="active">
+                <span> 📅 Events</span>
+            </a>
+            <a href="notification.html">
+                <span>🔔 Notifications</span>
+            </a>
+        </nav>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <!-- HEADER -->
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Events Calendar</h1>
+                <p class="page-subtitle">Stay informed about company events and activities</p>
+            </div>
+            <button class="add-event-btn" id="addEventBtn">
+                <i class="fas fa-plus"></i>
+                Add New Event
+            </button>
+        </div>
+
+        <!-- VIEW TOGGLE -->
+        <div class="view-toggle">
+            <button class="view-btn active" id="listViewBtn">List View</button>
+            <button class="view-btn" id="calendarViewBtn">Calendar View</button>
+        </div>
+
+        <!-- STATS -->
+        <div class="event-stats">
+            <div class="stat-card">
+                <div class="stat-icon upcoming-stat">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="upcomingCount">0</h3>
+                    <p>Upcoming Events</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon past-stat">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="pastCount">0</h3>
+                    <p>Past Events</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon total-stat">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="totalCount">0</h3>
+                    <p>Total Events</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALENDAR VIEW (HIDDEN BY DEFAULT) -->
+        <div class="calendar-view" id="calendarView">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 class="calendar-month" id="currentMonth">January 2025</h2>
+                    <button class="calendar-nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <button class="add-event-btn" id="addEventCalendarBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Event
+                </button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Calendar will be generated dynamically -->
+            </div>
+        </div>
+
+        <!-- LIST VIEW -->
+        <div id="listView">
+            <!-- FILTERS -->
+            <div class="filters-container">
+                <div class="section-title">Filter Events</div>
+                <div class="filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchEvent" placeholder="Search event name or description..." />
+                    </div>
+                    <select id="eventType">
+                        <option value="all">All Events</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="past">Past</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- EVENT LIST -->
+            <h2 class="section-title">Event List</h2>
+            <ul id="eventList" class="event-list"></ul>
+        </div>
+    </main>
+
+    <script>
+        // Extended Event Data
+        const events = [
+            {
+                id: 1,
+                title: "Internal Hackathon 2025",
+                type: "upcoming",
+                date: "2025-01-25",
+                duration: "12 hours",
+                description: "A 12-hour hackathon for all developers and designers to collaborate on innovative projects. Prizes will be awarded to the top 3 teams.",
+                location: "Main Conference Hall",
+                participants: 45
+            },
+            {
+                id: 2,
+                title: "New Year Celebration & Awards",
+                type: "past",
+                date: "2025-01-01",
+                duration: "4 hours",
+                description: "Annual cultural event with performances, awards ceremony, and dinner. Recognizing employee achievements from the past year.",
+                location: "Grand Ballroom",
+                participants: 120
+            },
+            {
+                id: 3,
+                title: "Cybersecurity Awareness Workshop",
+                type: "upcoming",
+                date: "2025-02-10",
+                duration: "3 hours",
+                description: "IT security training for all employees. Learn about phishing, password security, and data protection best practices.",
+                location: "Training Room A",
+                participants: 60
+            },
+            {
+                id: 4,
+                title: "Monthly Town Hall Meeting",
+                type: "past",
+                date: "2024-12-14",
+                duration: "2 hours",
+                description: "Company-wide meeting to discuss quarterly updates, financial performance, and strategic goals for the upcoming quarter.",
+                location: "Auditorium",
+                participants: 200
+            },
+            {
+                id: 5,
+                title: "Digital Marketing Strategy Seminar",
+                type: "upcoming",
+                date: "2025-03-05",
+                duration: "5 hours",
+                description: "Workshop on digital marketing trends, brand awareness strategies, and social media marketing techniques.",
+                location: "Marketing Department",
+                participants: 35
+            },
+            {
+                id: 6,
+                title: "Leadership Development Program",
+                type: "upcoming",
+                date: "2025-02-28",
+                duration: "2 days",
+                description: "Intensive leadership training for middle managers focusing on team management, decision making, and strategic thinking.",
+                location: "Executive Training Center",
+                participants: 25
+            },
+            {
+                id: 7,
+                title: "Annual Health Checkup Camp",
+                type: "upcoming",
+                date: "2025-01-30",
+                duration: "8 hours",
+                description: "Free health checkup for all employees including blood tests, BMI check, and consultation with doctors.",
+                location: "Employee Wellness Center",
+                participants: 150
+            },
+            {
+                id: 8,
+                title: "Q4 Financial Review Meeting",
+                type: "past",
+                date: "2024-11-20",
+                duration: "3 hours",
+                description: "Review of Q4 financial performance, budget planning for next year, and department-wise expenditure analysis.",
+                location: "Board Room",
+                participants: 18
+            }
+        ];
+
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Check if event is upcoming
+        function isUpcoming(dateString) {
+            const eventDate = new Date(dateString);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return eventDate >= today;
+        }
+
+        // Update event stats
+        function updateEventStats() {
+            const upcomingCount = events.filter(e => isUpcoming(e.date)).length;
+            const pastCount = events.filter(e => !isUpcoming(e.date)).length;
+            const totalCount = events.length;
+            
+            document.getElementById("upcomingCount").textContent = upcomingCount;
+            document.getElementById("pastCount").textContent = pastCount;
+            document.getElementById("totalCount").textContent = totalCount;
+        }
+
+        // Render events in list view
+        function renderEvents(filterType = "all", search = "") {
+            const list = document.getElementById("eventList");
+            list.innerHTML = "";
+
+            const filteredEvents = events
+                .filter(event => {
+                    const matchesType = filterType === "all" || event.type === filterType;
+                    const matchesSearch = search === "" || 
+                        event.title.toLowerCase().includes(search.toLowerCase()) ||
+                        event.description.toLowerCase().includes(search.toLowerCase());
+                    return matchesType && matchesSearch;
+                })
+                .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (filteredEvents.length === 0) {
+                list.innerHTML = `
+                    <div class="no-results">
+                        <i class="far fa-calendar-times"></i>
+                        <h3>No events found</h3>
+                        <p>Try adjusting your search or filter to find events.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredEvents.forEach(event => {
+                const formattedDate = formatDate(event.date);
+                const isEventUpcoming = isUpcoming(event.date);
+                
+                list.innerHTML += `
+                    <li class="event-item ${isEventUpcoming ? 'upcoming' : 'past'}">
+                        <div class="event-header">
+                            <div>
+                                <div class="event-title">${event.title}</div>
+                                <div class="event-type">${isEventUpcoming ? 'UPCOMING' : 'PAST'}</div>
+                            </div>
+                            <div class="event-duration">
+                                <i class="far fa-clock"></i>
+                                ${event.duration}
+                            </div>
+                        </div>
+                        
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i>
+                            ${formattedDate}
+                        </div>
+                        
+                        <div class="event-description">${event.description}</div>
+                        
+                        <div class="event-footer">
+                            <div>
+                                <div><i class="fas fa-map-marker-alt"></i> ${event.location}</div>
+                                <div style="font-size: 14px; color: #64748b; margin-top: 5px;">
+                                    <i class="fas fa-users"></i> ${event.participants} participants
+                                </div>
+                            </div>
+                            <div class="event-actions">
+                                ${isEventUpcoming ? 
+                                    `<button class="register-btn" onclick="registerForEvent(${event.id})">
+                                        <i class="fas fa-user-plus"></i> Register
+                                    </button>` : 
+                                    `<button class="register-btn" disabled>
+                                        <i class="fas fa-check"></i> Completed
+                                    </button>`
+                                }
+                                <button class="action-btn" title="Add to Calendar" onclick="addToCalendar(${event.id})">
+                                    <i class="far fa-calendar-plus"></i>
+                                </button>
+                                <button class="action-btn" title="Share Event" onclick="shareEvent(${event.id})">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            });
+        }
+
+        // Calendar functionality
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        function generateCalendar(month, year) {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            
+            document.getElementById("currentMonth").textContent = `${monthNames[month]} ${year}`;
+            
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+            
+            const calendarGrid = document.getElementById("calendarGrid");
+            calendarGrid.innerHTML = "";
+            
+            // Day headers
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            dayNames.forEach(day => {
+                calendarGrid.innerHTML += `<div class="calendar-day-header">${day}</div>`;
+            });
+            
+            // Empty cells for days before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                calendarGrid.innerHTML += `<div class="calendar-day"></div>`;
+            }
+            
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayEvents = events.filter(event => event.date === dateStr);
+                
+                let eventsHTML = "";
+                dayEvents.forEach(event => {
+                    const isUpcomingEvent = isUpcoming(event.date);
+                    const eventClass = isUpcomingEvent ? "upcoming" : "past";
+                    eventsHTML += `<div class="calendar-event ${eventClass}" onclick="showEventDetails('${event.id}')">${event.title}</div>`;
+                });
+                
+                calendarGrid.innerHTML += `
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">${day}</div>
+                        ${eventsHTML}
+                    </div>
+                `;
+            }
+        }
+
+        // View toggle functionality
+        document.getElementById("listViewBtn").addEventListener("click", function() {
+            this.classList.add("active");
+            document.getElementById("calendarViewBtn").classList.remove("active");
+            document.getElementById("listView").style.display = "block";
+            document.getElementById("calendarView").style.display = "none";
+        });
+
+        document.getElementById("calendarViewBtn").addEventListener("click", function() {
+            this.classList.add("active");
+            document.getElementById("listViewBtn").classList.remove("active");
+            document.getElementById("listView").style.display = "none";
+            document.getElementById("calendarView").style.display = "block";
+        });
+
+        // Calendar navigation
+        document.getElementById("prevMonth").addEventListener("click", function() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        document.getElementById("nextMonth").addEventListener("click", function() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        // Event actions
+        function registerForEvent(eventId) {
+            const event = events.find(e => e.id === eventId);
+            alert(`Successfully registered for: ${event.title}\n\nDate: ${formatDate(event.date)}\nLocation: ${event.location}`);
+        }
+
+        function addToCalendar(eventId) {
+            const event = events.find(e => e.id === eventId);
+            alert(`"${event.title}" has been added to your calendar.`);
+        }
+
+        function shareEvent(eventId) {
+            const event = events.find(e => e.id === eventId);
+            if (navigator.share) {
+                navigator.share({
+                    title: event.title,
+                    text: event.description,
+                    url: window.location.href,
+                });
+            } else {
+                alert(`Share link for: ${event.title}\n\nCopy this link to share: ${window.location.href}?event=${eventId}`);
+            }
+        }
+
+        function showEventDetails(eventId) {
+            const event = events.find(e => e.id === parseInt(eventId));
+            alert(`Event Details:\n\nTitle: ${event.title}\nDate: ${formatDate(event.date)}\nType: ${event.type}\nDuration: ${event.duration}\nLocation: ${event.location}\n\nDescription: ${event.description}`);
+        }
+
+        // Add event button functionality
+        document.getElementById("addEventBtn").addEventListener("click", function() {
+            alert("This would open a form to add a new event. In a real application, this would allow creating events with date, title, description, etc.");
+        });
+
+        document.getElementById("addEventCalendarBtn").addEventListener("click", function() {
+            alert("This would open a form to add a new event. In a real application, this would allow creating events with date, title, description, etc.");
+        });
+
+        // Event listeners for filters
+        document.getElementById("eventType").addEventListener("change", function() {
+            renderEvents(this.value, document.getElementById("searchEvent").value);
+        });
+
+        document.getElementById("searchEvent").addEventListener("keyup", function() {
+            renderEvents(document.getElementById("eventType").value, this.value);
+        });
+
+        // Initialize
+        window.onload = function() {
+            updateEventStats();
+            renderEvents();
+            generateCalendar(currentMonth, currentYear);
+        };
+    </script>
+</body>
+</html>

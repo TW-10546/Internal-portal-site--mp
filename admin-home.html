@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Home</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR MENU -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+        <nav>
+            <a href="#" class="active">
+                 🏠 Home
+            </a>
+            <a href="announcements.html">
+                 📢 Announcements
+            </a>
+            <a href="events.html">
+                 📅 Events
+            </a>
+            <a href="notification.html">
+                 🔔 Notifications
+            </a>
+            
+            <!-- Admin Panel Button with Dropdown -->
+            <div class="admin-panel-container">
+                <a href="#" class="admin-btn" id="adminBtn">
+                    <i class="fas fa-cog"></i> Admin Panel
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="admin-dropdown" id="adminDropdown">
+                    <button class="admin-dropdown-btn" id="aiNewsBtn">
+                        <i class="fas fa-robot"></i> AI News Creation
+                    </button>
+                    <button class="admin-dropdown-btn" id="schedulerBtn">
+                        <i class="fas fa-clock"></i> Scheduler
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Admin Panel Overlay (for closing dropdown when clicking outside) -->
+        <div class="admin-overlay" id="adminOverlay"></div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <h1 class="page-title">Welcome back 👋</h1>
+        
+        <!-- THREE GRID BOX SECTIONS -->
+        <div class="grid">
+            <!-- RECENT NEWS -->
+            <section class="card">
+                <h2>Recent News</h2>
+                <ul id="recentNews"></ul>
+            </section>
+            
+            <!-- URGENT NEWS -->
+            <section class="card urgent">
+                <h2>🚨 Urgent News</h2>
+                <ul id="urgentNews"></ul>
+            </section>
+            
+            <!-- UPCOMING EVENTS -->
+            <section class="card">
+                <h2>Upcoming Events</h2>
+                <ul id="upcomingEvents"></ul>
+            </section>
+        </div>
+        
+        <!-- Admin Panel Modals -->
+        <div class="modal" id="aiNewsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-robot"></i> AI News Creation</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Create news articles using AI assistance. This feature is under development.</p>
+                    <div class="modal-actions">
+                        <button class="modal-btn primary">Generate AI News</button>
+                        <button class="modal-btn secondary">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal" id="schedulerModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-clock"></i> Content Scheduler</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Schedule posts and announcements for automatic publishing. This feature is under development.</p>
+                    <div class="modal-actions">
+                        <button class="modal-btn primary">Create Schedule</button>
+                        <button class="modal-btn secondary">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>
