@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twaveconnect | Notifications</title>
+    <link rel="stylesheet" href="/Homepage/home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR MENU -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Twave<span>connect</span></h2>
+        </div>
+        <nav>
+            <a href="home.html">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="announcements.html">
+                <i class="fas fa-bullhorn"></i> Announcements
+            </a>
+            <a href="events.html">
+                <i class="fas fa-calendar-alt"></i> Events
+            </a>
+            <a href="#" class="active">
+                <i class="fas fa-bell"></i> Notifications
+            </a>
+            
+            <!-- Admin Panel Button with Dropdown -->
+            <div class="admin-panel-container">
+                <a href="#" class="admin-btn" id="adminBtn">
+                    <i class="fas fa-cog"></i> Admin Panel
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="admin-dropdown" id="adminDropdown">
+                    <button class="admin-dropdown-btn" id="aiNewsBtn">
+                        <i class="fas fa-robot"></i> AI News Creation
+                    </button>
+                    <button class="admin-dropdown-btn" id="schedulerBtn">
+                        <i class="fas fa-clock"></i> Scheduler
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Admin Panel Overlay (for closing dropdown when clicking outside) -->
+        <div class="admin-overlay" id="adminOverlay"></div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="page-header">
+            <h1 class="page-title"><i class="fas fa-bell"></i> Notifications</h1>
+            <div class="notification-actions">
+                <button class="btn btn-mark-all" id="markAllReadBtn">
+                    <i class="fas fa-check-double"></i> Mark All as Read
+                </button>
+                <button class="btn btn-clear-all" id="clearAllBtn">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+        </div>
+        
+        <!-- NOTIFICATIONS FILTER -->
+        <div class="notification-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-bell"></i> All
+            </button>
+            <button class="filter-btn" data-filter="unread">
+                <i class="fas fa-circle"></i> Unread
+            </button>
+            <button class="filter-btn" data-filter="urgent">
+                <i class="fas fa-exclamation-triangle"></i> Urgent
+            </button>
+            <button class="filter-btn" data-filter="announcements">
+                <i class="fas fa-bullhorn"></i> Announcements
+            </button>
+            <button class="filter-btn" data-filter="events">
+                <i class="fas fa-calendar-alt"></i> Events
+            </button>
+        </div>
+        
+        <!-- NOTIFICATIONS LIST -->
+        <div class="notifications-container">
+            <div class="notifications-list" id="notificationsList">
+                <!-- Notifications will be dynamically inserted here -->
+            </div>
+            
+            <!-- NO NOTIFICATIONS MESSAGE -->
+            <div class="no-notifications" id="noNotifications">
+                <i class="fas fa-bell-slash"></i>
+                <h3>No Notifications</h3>
+                <p>You're all caught up!</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="notification.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+body {
+    background: #f1f6ff;
+}
+
+/* Header */
+.topbar {
+    background: #002bff;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+/* Dropdown filter */
+.filter-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.dropdown {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    font-size: 15px;
+}
+
+/* Notification list */
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Card */
+.notification-card {
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 3px 8px 20px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.notification-card h3 {
+    margin-bottom: 6px;
+    font-size: 19px;
+}
+
+.notification-card p {
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Tag Colors */
+.tag {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: white;
+}
+
+.urgent-tag { background: #ff3e3e; }
+.info-tag { background: #2b6fff; }
+.event-tag { background: #00b36f; }
